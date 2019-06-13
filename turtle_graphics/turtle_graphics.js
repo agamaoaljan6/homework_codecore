@@ -90,4 +90,24 @@ class Turtle {
         }
         return this;
     }
+    forward (distance) { // means go where you're looking 
+        for (let i=0; i < distance; i++) { // distance means how FAR you go
+            this.allPoints();
+        }
+        return this;
+    }
+    print(){
+        this.grid.draw();
+    }
 }
+
+let turtle = new Turtle(0,0);
+turtle
+.forward(5)
+.right()
+.forward(5)
+.right()
+.forward(5)
+.right()
+.forward(5)
+.print()
