@@ -13,14 +13,14 @@ class Grid { // created a grid to visualize the 5 by 5 grid more clearly
             this.cells.push(row);
         }
     }
-    draw() {
+    draw() { // draw method will allow us to DRAW the turtle's movement 
         for (let i = this.x - 1; i >= 0; i--) {
             let string = "";
             for (let j = 0; j < this.y; j++) {
                 if (this.cells[i][j].turtleHasBeenHere === true) {
-                    string += '•';
+                    string += '•'; // if the turtle is present in the grid print this
                 } else {
-                    string += ' ';
+                    string += ' '; // otherwise print this
                 }
             }
             console.log(string)
@@ -34,7 +34,7 @@ class Turtle {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.direction = 0;
+        this.direction = 0; // this.direction is where i'm storing the direction of the turtle
         this.grid = new Grid(6, 6);
         this.grid.addTurtleLocation(x, y);
     }
@@ -55,7 +55,7 @@ class Turtle {
         return this;
     }
     allPoints() {
-        switch(this.direction){ // this.direction is where i'm storing the direction of the turtle
+        switch(this.direction){ 
             case 0:
                 this.y++; // changes the location of our turtle by +1 in the y axis
                 if(this.y == this.grid.y) {
@@ -65,7 +65,7 @@ class Turtle {
 
                 break;
             case 1: 
-                this.x++; 
+                this.x++; // changes the location of our turtle by +1 in the x axis
                 if(this.x == this.grid.x) {
                     this.x = this.grid.x - 1;
                 }
@@ -90,13 +90,13 @@ class Turtle {
         }
         return this;
     }
-    forward (distance) { // means go where you're looking 
+    forward (distance) { // forward method tells us where the turtle is looking 
         for (let i=0; i < distance; i++) { // distance means how FAR you go
             this.allPoints();
         }
         return this;
     }
-    print(){
+    print(){ // prints the whole trail of the turtle when you call it
         this.grid.draw();
     }
 }
