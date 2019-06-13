@@ -30,3 +30,28 @@ class Grid { // created a grid to visualize the 5 by 5 grid more clearly
         this.cells[y][x].turtleHasBeenHere = true;
     }
 }
+class Turtle {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.direction = 0;
+        this.grid = new Grid(6, 6);
+        this.grid.addTurtleLocation(x, y);
+    }
+    right() {
+        this.direction += 1;
+        this.direction = this.direction % 4;
+        if (this.direction < 0) {
+            this.direction += 4;
+        }
+        return this;
+    }
+    left() {
+        this.direction -= 1;
+        this.direction = this.direction % 4;
+        if (this.direction < 0) {
+            this.direction += 4;
+        }
+        return this;
+    }
+}
