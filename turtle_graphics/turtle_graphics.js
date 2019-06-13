@@ -54,4 +54,40 @@ class Turtle {
         }
         return this;
     }
+    allPoints() {
+        switch(this.direction){ // this.direction is where i'm storing the direction of the turtle
+            case 0:
+                this.y++; // changes the location of our turtle by +1 in the y axis
+                if(this.y == this.grid.y) {
+                    this.y = this.grid.y - 1;
+                }
+                this.grid.addTurtleLocation(this.x, this.y); //Just add it on the list like a trail.
+
+                break;
+            case 1: 
+                this.x++; 
+                if(this.x == this.grid.x) {
+                    this.x = this.grid.x - 1;
+                }
+                this.grid.addTurtleLocation(this.x, this.y);
+                break;
+            case 2: 
+                this.y--;
+                if(this.y < 0) {
+                    this.y = 0;
+                }
+                this.grid.addTurtleLocation(this.x, this.y);
+                break;
+            case 3: 
+                this.x--;
+                if(this.x < 0) {
+                    this.x = 0;
+                }
+                this.grid.addTurtleLocation(this.x, this.y);
+                break;
+            default:
+                return this;
+        }
+        return this;
+    }
 }
