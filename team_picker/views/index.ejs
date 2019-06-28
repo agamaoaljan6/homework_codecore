@@ -1,0 +1,16 @@
+<%- include("./partials/header") %>
+    <% for (let cohort of cohorts){%>
+        <div class="container mt-3">
+            <div class="border p-3">
+            <div class="d-flex align-items-center" > 
+            <% if (cohort.logoUrl) {%>
+                <img class="mr-2" src="<%= cohort.logoUrl %>" style="max-height: 50px; max-width: 50px; border-radius: 100%"  alt="">
+            <% }%>
+                <h3><%=cohort.name %></h3>
+            </div>
+                <p><%=cohort.members %>  </p>
+                <a href="/cohorts/<%=cohort.id%>" class="btn btn-primary">Show Cohort</a>
+            </div>
+        </div>
+    <%}%> 
+<%- include("./partials/footer") %>
