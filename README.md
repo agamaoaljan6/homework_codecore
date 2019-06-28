@@ -1,10 +1,7 @@
 # homework_codecore
 CODECORE Homework REPO
 
-THESE ARE ALL MY CODECORE HOMEWORK 
-
-WEEK #1 - BOX IT SCRIPT
-
-WEEK #2 - TURTLE GRAPHICS
-
-WEEK #3 - TODO LIST 
+- npm i to install all packages
+- createdb <database name>
+- knex migrate:latest 
+- nodemon app.js
