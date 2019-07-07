@@ -21,12 +21,19 @@ class PostsController < ApplicationController
     end
     
     def show 
+
     end
     
     def edit
     end
     
     def update
+        if @post.update(post_params)
+            flash[:success] = "Post was successfully updated!"
+            redirect_to post_path(@post)
+        else
+            render 'edit'
+        end
     end
 
     def destroy
@@ -37,7 +44,6 @@ class PostsController < ApplicationController
 
 
     private 
-
     def post_params
         params.require(:post).permit(:title, :body)
     end
