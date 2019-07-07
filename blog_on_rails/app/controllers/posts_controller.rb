@@ -21,7 +21,8 @@ class PostsController < ApplicationController
     end
     
     def show 
-
+        @comment = Comment.new
+        @comments = @post.comments.order(created_at: :desc)
     end
     
     def edit
@@ -32,6 +33,7 @@ class PostsController < ApplicationController
             flash[:success] = "Post was successfully updated!"
             redirect_to post_path(@post)
         else
+            @post.errors
             render 'edit'
         end
     end

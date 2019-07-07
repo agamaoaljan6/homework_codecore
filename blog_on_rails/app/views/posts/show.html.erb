@@ -5,7 +5,7 @@
         </strong></h4>
     <hr>
 
-    <div class="product-actions row">
+    <div class="product-actions" align="center">
         <%= link_to  "Edit this post", edit_post_path(@post), class: "btn btn-xs btn-primary" %>
         <%= link_to  "View all posts", posts_path, class: "btn btn-xs btn-success ml-2" %>
         <%= link_to 'Delete this post', post_path(@post), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-xs btn-danger ml-2"%>
@@ -14,3 +14,36 @@
 </div>
 <br>
 
+<%= form_with(model: [@post, @comment], local: true) do |f| %>
+<% if @comment.errors.any? %>
+<ul>
+  <% @comment.errors.full_messages.each do |msg|%>
+  <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<div class="form-group">
+  <div class="col-sm-4">
+      <p class="comment-comment"><%= f.label :COMMENT%></p>
+    <%= f.text_area :body,rows:5,class: "form-control", placeholder: "Drop a comment!", autofocus: true %>
+  </div>
+
+<div class="col-sm-offset-4 mt-5 ml-3">
+  <%= f.submit class: 'btn btn-primary create-btn' %>
+</div>
+<% end %>
+
+  <div class="row" align="center">
+    <% @comments.each do |comment| %>
+      <div class="col-sm-4">
+          <div class="post-comment">
+            <%= comment.body %>
+          </div>
+
+          <div class="col-sm-offset-4 col-sm-2">
+            <%= link_to("Delete",post_comment_path(@post, comment),method: :delete,data: {confirm: "Are you sure?"},class: 'btn btn-primary del-btn')%>
+          </div>
+          <p class="post-answer"> Answered <%= time_ago_in_words(comment.created_at) %> ago </p>
+        </div>
+  <% end %>
