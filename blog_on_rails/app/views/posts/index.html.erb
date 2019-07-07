@@ -1,0 +1,22 @@
+
+<h1 class="post-index" align="center">All Products List</h1>
+
+<% @posts.each do |post| %>
+<div class="row">
+    <div class="col-sm-10 offset-1">
+        <div class="card card-body bg-light">
+            <div class="post-title">
+                <%= link_to post.title, post_path(post)%>
+            </div>
+            <div class="post-body">
+                <%= post.body%>
+            </div>
+          
+    <div class="post-actions">
+        <%= link_to  "Edit this post", edit_post_path(post), class: "btn btn-sm btn-primary" %>
+        <%= link_to 'Delete this post', post_path(post), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-sm btn-danger ml-1"%>
+    </div>
+</div>
+</div>
+</div>
+<%end%>
