@@ -16,7 +16,7 @@ class PostsController < ApplicationController
         redirect_to post_path(@post)
         else
         @post.errors
-        redirect_to 'new'
+        render 'new'
         end
     end
     
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
     def destroy
     @post.destroy 
     flash[:danger] = "Post was successfully deleted!"
-    redirect_to post_path
+    redirect_to posts_path
     end
 
 
