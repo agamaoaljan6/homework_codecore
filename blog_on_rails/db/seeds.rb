@@ -5,3 +5,31 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Post.destroy_all
+Comment.destroy_all
+
+500.times do
+    created_at = Faker::Date.backward(365 * 5)
+  p = Post.create(
+    title: Faker::TvShows::HowIMetYourMother.character,
+    body: Faker::TvShows::HowIMetYourMother.quote,
+    created_at: created_at,
+    updated_at: created_at,
+
+  )
+  if p.valid?
+    p.comments = rand(0..15).times.map do
+      Comment.new(body: Faker::TvShows::HowIMetYourMother.catch_phrase)
+    end
+end
+end
+
+comments = Comment.all
+posts = Post.all
+
+puts Cowsay.say("Generated #{posts.count} posts", :frogs)
+puts Cowsay.say("Generated #{comments.count} comment", :tux)
+
+# puts "Login with #{super_user.email} and password: #{PASSWORD}"
