@@ -1,13 +1,12 @@
 <h2 align="center">Title: <%= @post.title%></h2>
 <div align="center">
-    <h4 class="description"><strong>Description:
+    <h4 class="description mt-5 mb-4">Description:
             <%= simple_format(@post.body)%>
-        </strong></h4>
-    <hr>
+        </h4>
+        <p> Posted <%= time_ago_in_words(@post.created_at) %> ago </p>
 
-    <div class="product-actions" align="center">
+    <div class="post-actions">
         <%= link_to  "Edit this post", edit_post_path(@post), class: "btn btn-xs btn-primary" %>
-        <%= link_to  "View all posts", posts_path, class: "btn btn-xs btn-success ml-2" %>
         <%= link_to 'Delete this post', post_path(@post), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-xs btn-danger ml-2"%>
     </div>
 
@@ -29,7 +28,7 @@
     <%= f.text_area :body,rows:5,class: "form-control", placeholder: "Drop a comment!", autofocus: true %>
   </div>
 
-<div class="col-sm-offset-4 mt-5 ml-3 mb-5">
+<div class="col-sm-offset-4 mt-3 ml-3 mb-5">
   <%= f.submit class: 'btn btn-primary create-btn' %>
 </div>
 <% end %>
