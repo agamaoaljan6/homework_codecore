@@ -29,7 +29,7 @@
     <%= f.text_area :body,rows:5,class: "form-control", placeholder: "Drop a comment!", autofocus: true %>
   </div>
 
-<div class="col-sm-offset-4 mt-5 ml-3">
+<div class="col-sm-offset-4 mt-5 ml-3 mb-5">
   <%= f.submit class: 'btn btn-primary create-btn' %>
 </div>
 <% end %>
@@ -41,7 +41,7 @@
             <%= comment.body %>
           </div>
 
-          <div class="col-sm-offset-4 col-sm-2">
+          <div class="col-sm-4">
             <%= link_to("Delete",post_comment_path(@post, comment),method: :delete,data: {confirm: "Are you sure?"},class: 'btn btn-primary del-btn')%>
           </div>
           <p class="post-answer"> Answered <%= time_ago_in_words(comment.created_at) %> ago </p>

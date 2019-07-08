@@ -20,7 +20,7 @@ Comment.destroy_all
 
   )
   if p.valid?
-    p.comments = rand(0..2).times.map do
+    p.comments = rand(0..10).times.map do
       Comment.new(body: Faker::TvShows::HowIMetYourMother.catch_phrase)
     end
 end
