@@ -10,7 +10,7 @@
 Post.destroy_all
 Comment.destroy_all
 
-500.times do
+50.times do
     created_at = Faker::Date.backward(365 * 5)
   p = Post.create(
     title: Faker::TvShows::HowIMetYourMother.character,
@@ -20,7 +20,7 @@ Comment.destroy_all
 
   )
   if p.valid?
-    p.comments = rand(0..15).times.map do
+    p.comments = rand(0..2).times.map do
       Comment.new(body: Faker::TvShows::HowIMetYourMother.catch_phrase)
     end
 end
