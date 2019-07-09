@@ -64,6 +64,11 @@
     margin-bottom: 1em;
 }
 
+.create-button {
+    text-align: center;
+    margin-right: 9em;
+}
+
 footer {
     margin-top: 45px;
     padding-top: 5px;
@@ -101,6 +106,7 @@ footer ul li {
     .form-field {
         width:50%
     }
+
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -116,6 +122,9 @@ footer ul li {
         width:90%;
         margin-left:8.5em;
     }
+    .create-button {
+        margin-right:5em;
+    }
   }
 
 /* Large devices (desktops, 992px and up) */
@@ -130,5 +139,8 @@ footer ul li {
     .form-field {
         width:85%;
         margin-left:15em;
+    }
+    .create-button {
+        margin-right:10em;
     }
 }
