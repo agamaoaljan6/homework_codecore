@@ -1,7 +1,7 @@
 <%= render '/shared/errors', obj: @post%>
 
-<div class="container-fluid offset-2">
-<div class="form-group row ">
+<div class="container column form-field">
+<div class="form-group">
     <div class="col-sm-10">
         <%= form_for(@post, :html => {class:'form-horizontal', role: "form"}) do |f| %>
         <div class="form-group">

@@ -1,8 +1,8 @@
-<h2 align="center">Title: <%= @post.title%></h2>
+<h2 align="center"> <%= @post.title%></h2>
 <div align="center">
-    <h4 class="description mt-5 mb-4">Description:
+    <p class="description mt-5 mb-2">Description:
             <%= simple_format(@post.body)%>
-        </h4>
+        </p>
         <p> Posted <%= time_ago_in_words(@post.created_at) %> ago </p>
 
     <div class="post-actions">
@@ -23,10 +23,13 @@
 <% end %>
 
 <div class="form-group">
-  <div class="col-sm-4">
+  <div class="col-sm-6">
       <p class="comment-comment"><%= f.label :COMMENT%></p>
-    <%= f.text_area :body,rows:5,class: "form-control", placeholder: "Drop a comment!", autofocus: true %>
+      <%= f.text_area :title,rows:5, class: "form-control", placeholder: "Drop a comment", autofocus: true %>
+
   </div>
+
+
 
 <div class="col-sm-offset-4 mt-3 ml-3 mb-5">
   <%= f.submit class: 'btn btn-primary create-btn' %>
@@ -41,8 +44,8 @@
           </div>
 
           <div class="col-sm-4">
-            <%= link_to("Delete",post_comment_path(@post, comment),method: :delete,data: {confirm: "Are you sure?"},class: 'btn btn-primary del-btn')%>
+            <%= link_to("Delete",post_comment_path(@post, comment),method: :delete,data: {confirm: "Are you sure?"})%>
           </div>
-          <p class="post-answer"> Answered <%= time_ago_in_words(comment.created_at) %> ago </p>
+          <p class="post-answer"> Commented <%= time_ago_in_words(comment.created_at) %> ago </p>
         </div>
   <% end %>

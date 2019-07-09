@@ -91,9 +91,15 @@ footer ul li {
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
-    .post-index{
+    .post-index {
         width: 50%;
         margin-left:1em;
+    }
+    .form-error {
+        width:50%;
+    }
+    .form-field {
+        width:50%
     }
 }
 
@@ -102,11 +108,27 @@ footer ul li {
     .post-index {
       width: 33.33%;
     }
+    .form-error {
+        width:60%;
+        margin-left: 9.5em;
+    }
+    .form-field {
+        width:90%;
+        margin-left:8.5em;
+    }
   }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
     .post-index {
         width:25%;
+    }
+    .form-error {
+        width: 55%;
+        margin-left: 17em;
+    }
+    .form-field {
+        width:85%;
+        margin-left:15em;
     }
 }
