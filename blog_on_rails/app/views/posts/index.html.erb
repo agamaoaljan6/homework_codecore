@@ -1,10 +1,8 @@
 <h1 class="mb-5" align="center">All Posts</h1>
 <div class="container">
         <div class="row">
-
 <% @posts.each do |post| %>
-        <div class="col-4">
-            <div class="card card-body bg-light ">
+            <div class="card card-body bg-light post-index">
                 <div class="post-title">
                     <%= link_to post.title, post_path(post)%>
                 </div>
@@ -12,7 +10,7 @@
                     <%= post.body%>
                 </div>
             </div>
-        </div>
+      
         <%end%>
     </div>
 </div>
