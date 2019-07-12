@@ -6,7 +6,7 @@ Post.destroy_all
   t = Faker::Alphanumeric.alphanumeric 10
   p = Post.create(
     title: t,
-    body: Faker::TvShows::HowIMetYourMother.quote
+    body: Faker::Hipster.paragraphs
   )
   if p.valid?
     p.comments = rand(0..10).times.map do
