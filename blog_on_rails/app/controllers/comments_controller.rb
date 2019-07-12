@@ -1,10 +1,12 @@
 class CommentsController < ApplicationController
     def create
+        
         @post = Post.find(params[:post_id])
         @comment = Comment.new comment_params
         @comment.post = @post
-
+       
         if @comment.save
+        
             redirect_to post_path(@post)
         else
             @comments = @post.comments.order(created_at: :desc)

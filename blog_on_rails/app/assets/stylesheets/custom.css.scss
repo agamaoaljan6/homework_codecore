@@ -8,9 +8,11 @@
     letter-spacing: -1px;
     font-weight: bold;
 }
-
-
-
+ul.answer-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  
 .jumbotron {
     background-image: asset-url('nick-morrison-FHnnjk1Yj7Y-unsplash.jpg');
     background-size:cover;
