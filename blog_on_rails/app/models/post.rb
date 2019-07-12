@@ -5,7 +5,7 @@ class Post < ApplicationRecord
 
     validates(
       :body,
-      length: { minimum: 50}
+      length: { minimum: 1}
     )
   
 end
