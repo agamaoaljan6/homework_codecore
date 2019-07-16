@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get('/', {to:'welcome#index', as: :root})
 
+
+resources :users, only: [:create, :new, :edit]
 resources :posts do
   resources :comments, only: [:create, :destroy]
 end
