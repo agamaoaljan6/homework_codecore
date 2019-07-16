@@ -8,5 +8,4 @@ class Post < ApplicationRecord
       :body,
       length: { minimum: 50}
     )
-  
 end
