@@ -7,31 +7,32 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <%=link_to 'Posts', posts_path, class: 'nav-item nav-link'%>
-  
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-  
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Actions
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%=link_to 'New Post', new_post_path, class: 'dropdown-item'%>
-          <!-- <div class="dropdown-divider"></div>
+      <%=link_to 'Posts', posts_path, class: 'nav-item nav-link'%>
+
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Actions
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%=link_to 'New Post', new_post_path, class: 'dropdown-item'%>
+              <!-- <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a> -->
-        </div>
-      </li>
-      <!-- <li class="nav-item">
+            </div>
+          </li>
+          <!-- <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li> -->
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-
-    </form>
-  </div>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <%=link_to 'Sign Up', new_user_path, class: 'btn btn-outline-success my-2 my-sm-0 mr-2'%>
+          <%=link_to 'Sign In', new_session_path, class: 'btn btn-outline-success my-2 my-sm-0 mr-2'%>
+        </form>
+      </div>
 </nav>
