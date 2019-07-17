@@ -33,12 +33,26 @@
 
         <form class="form-inline my-2 my-lg-0">
           <% if user_signed_in? %>
-          <%=link_to 'Sign Out', session_path, method: :delete, class: 'btn btn-outline-danger my-2 my-sm-0 mr-2'%>
-          <% else %>
-          <%=link_to 'Sign Up', new_user_path, class: 'btn btn-outline-success my-2 my-sm-0 mr-2'%>
-          <%=link_to 'Sign In', new_session_path, class: 'btn btn-outline-success my-2 my-sm-0 mr-2'%>
-          <%end%>
+          <small
+            class="mr-2"><%= link_to "EDIT profile",edit_user_path(current_user),class: 'btn btn-outline-success my-2 my-sm-0 mr-2' %></small>
+          </li>
+          <li class="nav-item ml-2">
+            <small>
+              <%= 
+              link_to 'Sign Out', 
+              session_path, 
+              method: :delete,
+              class: 'btn btn-outline-danger my-2 my-sm-0 mr-2', 
+              data: { confirm: "Log out?"}
+            %>
+            </small>
+            <% else %>
+            <small>
+              <%= link_to 'Login', new_session_path, { class: "navbar-link mx-1" } %>
+              <%= link_to 'Sign Up', signup_path, { class: "navbar-link mx-1" } %>
+            </small>
+            <% end %>
         </form>
-        
+
       </div>
 </nav>

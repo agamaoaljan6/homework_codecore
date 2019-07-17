@@ -3,9 +3,10 @@ Rails.application.routes.draw do
 
   get('/', {to:'welcome#index', as: :root})
 
+  get '/users/:id/password', { to: "users#password", as: 'password' }
+  patch '/users/:id/password', { to: "users#password_update", as: 'password_update' }
 
-
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit, :show]
   resource :session, only: [:new, :create, :destroy]
  
 resources :posts do
