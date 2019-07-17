@@ -5,14 +5,8 @@ class UsersController < ApplicationController
         @user = User.new 
     end
 
-
     def create
-        @user = User.create params.require(:user).permit(
-            :first_name, 
-            :last_name, 
-            :email, 
-            :password, 
-            :password_confirmation)
+        user_create
         if @user.save
             session[:user_id] = @user.id # What does this one do? 
             redirect_to root_path
@@ -36,7 +30,7 @@ class UsersController < ApplicationController
                 redirect_to password_update_path
             else
                 flash[:danger] = @user.errors.full_messages.join(', ')
-                redirect_to user_path
+                redirect_to password_path(user)
             end
         else
             flash[:danger] = "You've entered an invalid current password"
@@ -57,4 +51,13 @@ class UsersController < ApplicationController
     def show
     end
 
+    private 
+    def user_create 
+        @user = User.create params.require(:user).permit(
+            :first_name, 
+            :last_name, 
+            :email, 
+            :password, 
+            :password_confirmation)
+    end
 end
