@@ -1,14 +1,16 @@
 <h2 align="center"> <%= @post.title%></h2>
 <div align="center">
-    <p class="description mt-5 mb-2">Description:
-            <%= simple_format(@post.body)%>
-        </p>
-        <p> Posted <%= time_ago_in_words(@post.created_at) %> ago </p>
+  <p class="description mt-5 mb-2">Description:
+    <%= simple_format(@post.body)%>
+  </p>
+  <p> Posted <%= time_ago_in_words(@post.created_at) %> ago </p>
 
-    <div class="post-actions">
-        <%= link_to  "Edit this post", edit_post_path(@post), class: "btn btn-xs btn-primary" %>
-        <%= link_to 'Delete this post', post_path(@post), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-xs btn-danger ml-2"%>
-    </div>
+  <div class="post-actions">
+    <% if can? :crud, @post %>
+    <%= link_to  "Edit this post", edit_post_path(@post), class: "btn btn-xs btn-primary" %>
+    <%= link_to 'Delete this post', post_path(@post), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-xs btn-danger ml-2"%>
+    <%end%>
+  </div>
 
 </div>
 <br>
@@ -24,23 +26,24 @@
 
 <div class="form-group">
   <div class="col-sm-6">
-      <!-- <p class="comment-comment"><%= f.label :COMMENT%></p> -->
-      <%= f.text_area :body,rows:5, class: "form-control", placeholder: "Drop a comment", autofocus: true %>
+    <!-- <p class="comment-comment"><%= f.label :COMMENT%></p> -->
+    <%= f.text_area :body,rows:5, class: "form-control", placeholder: "Drop a comment", autofocus: true %>
 
   </div>
 
-<div class="col-sm-offset-4 mt-3 ml-3 mb-5">
-  <%= f.submit class: 'btn btn-primary create-btn' %>
-</div>
-<% end %>
+  <div class="col-sm-offset-4 mt-3 ml-3 mb-5">
+    <%= f.submit class: 'btn btn-primary create-btn' %>
+  </div>
+  <% end %>
 
-<div class="col-sm-10">
-  <ul class="answer-list ml-2">
-    <% @comments.each do |comment| %>
+  <div class="col-sm-10">
+    <ul class="answer-list ml-2">
+      <% @comments.each do |comment| %>
       <li>
         <p>
           <%= comment.body %> <br />
           <small>
+            <% if can? :crud, @post %>
             <%= link_to(
               "Delete",
               post_comment_path(@post, comment),
@@ -49,6 +52,7 @@
                 confirm: "Are you sure?"
               }
             ) %>
+            <%end%>
           </small>
           |
           <small>
@@ -56,6 +60,6 @@
           </small>
         </p>
       </li>
-    <% end %>
-  </ul>
-</div>
+      <% end %>
+    </ul>
+  </div>

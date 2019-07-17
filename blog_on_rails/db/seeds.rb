@@ -1,8 +1,8 @@
-Comment.destroy_all
-Post.destroy_all
+Comment.delete_all
+Post.delete_all
 
 
-50.times do
+100.times do
   t = Faker::Alphanumeric.alphanumeric 10
   p = Post.create(
     title: t,

@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
     def create
         @post = Post.new(post_params)
+        @post.user = current_user
         if @post.save 
             flash[:success] = "Post was successfully created!"
             redirect_to post_path(@post)
@@ -54,4 +55,10 @@ class PostsController < ApplicationController
     def find_posts
         @post = Post.find(params[:id])
     end
+
+    def authorize! 
+        flash[:danger] = "Not Authorized!"
+        redirect_to root_path unless 
+        can?(:crud, @post)
+      end 
 end
