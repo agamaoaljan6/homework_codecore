@@ -33,24 +33,24 @@ class UsersController < ApplicationController
         if @user&.authenticate params[:user][ :current_password ]
             if @user.update user_params
                 flash[:success] = "Password updated"
-                redirect_to user_path
+                redirect_to password_update_path
             else
                 flash[:danger] = @user.errors.full_messages.join(', ')
-                redirect_to request.referrer
+                redirect_to user_path
             end
         else
             flash[:danger] = "You've entered an invalid current password"
-            redirect_to request.referrer    
+            redirect_to user_path   
         end
     end
 
     def update
         if @user.update user_params
             flash[:success] = "Profile updated"
-            redirect_to user_path
+            redirect_to root_path
         else
             flash[:danger] = @user.errors.full_messages.join(', ')
-            redirect_to request.referrer
+            redirect_to user_path
         end
     end
 

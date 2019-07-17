@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   patch '/users/:id/password', { to: "users#password_update", as: 'password_update' }
 
   resources :users, only: [:new, :create, :edit, :show]
-  resource :session, only: [:new, :create, :destroy]
+  resource :session, only: [:new, :create, :destroy, :edit]
  
 resources :posts do
   resources :comments, only: [:create, :destroy]
