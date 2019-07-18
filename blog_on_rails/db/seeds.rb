@@ -13,7 +13,7 @@ Post.delete_all
       first_name: Faker::Name.unique.name,
       last_name: Faker::Name.unique.name,
       email: "#{Faker::Name.first_name.downcase}.#{Faker::Name.last_name.downcase}@example.com",
-      password: "super"
+      password: "supersecret"
     )
 end
   
