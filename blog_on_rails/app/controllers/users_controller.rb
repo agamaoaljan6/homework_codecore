@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :authenticate_user!, only: [:edit, :show, :update, :password, :password_update]
-    before_action :find_user, only: [:edit, :update]
+    before_action :find_user, only: [:edit, :update, :password]
     def new 
         @user = User.new 
     end
@@ -41,10 +41,10 @@ class UsersController < ApplicationController
     def update
         if @user.update user_params
             flash[:success] = "Profile updated"
-            redirect_to root_path
+            redirect_to edit_user_path(current_user)
         else
             flash[:danger] = @user.errors.full_messages.join(', ')
-            redirect_to user_path
+            redirect_to edit_user_path(current_user)
         end
     end
 
