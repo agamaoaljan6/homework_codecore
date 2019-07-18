@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :authenticate_user!, only: [:edit, :show, :update, :password, :password_update]
-    before_action :find_user, only: [:edit, :update, :password_update]
+    before_action :find_user, only: [:edit, :update, :password]
     def new 
         @user = User.new 
     end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
     def password_update
         if @user&.authenticate params[:user][:current_password]
-            if @user.update user_params
+            if @user.update params[:user][:current_password]
                 flash[:success] = "Password updated"
                 redirect_to password_update_path
             else
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
             end
         else
             flash[:danger] = "You've entered an invalid current password"
-            redirect_to user_path   
+            redirect_to password_update_path  
         end
     end
 
