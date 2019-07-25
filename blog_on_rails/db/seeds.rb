@@ -40,6 +40,6 @@ end
 posts = Post.all
 comments = Comment.all
 
-puts Cowsay.say("Generated #{ posts.count } posts",:frogs)
-puts Cowsay.say("Generated #{ comments.count } comments", :tux)
-puts Cowsay.say("Generated #{ users.count } users", :stegosaurus)
+puts "Generated #{ posts.count } posts"
+puts "Generated #{ comments.count } comments"
+puts "Generated #{ users.count } users"
