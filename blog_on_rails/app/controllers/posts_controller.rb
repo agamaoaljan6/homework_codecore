@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     before_action :authorize!, only: [:edit, :update, :destroy]
     
     def index 
-        @posts = Post.all
+        @posts = Post.all.order(created_at: :desc)
     end
     
     def new
@@ -29,6 +29,7 @@ class PostsController < ApplicationController
     end
     
     def edit
+        render :edit
     end
     
     def update
@@ -37,7 +38,7 @@ class PostsController < ApplicationController
             redirect_to post_path(@post)
         else
             @post.errors
-            render 'edit'
+            render :edit
         end
     end
 

@@ -1,17 +1,19 @@
 class UsersController < ApplicationController
-    before_action :authenticate_user!, only: [:edit, :show, :update, :password, :password_update]
-    before_action :find_user, only: [:edit, :update, :password]
+        before_action :authenticate_user!, only: [:edit, :show, :update, :password, :password_update]
+        before_action :find_user_params, only: [:edit, :show, :update, :password, :password_update]
+        before_action :authorize, only: [:edit, :update, :password, :password_update]
+    
     def new 
         @user = User.new 
     end
 
     def create
-        user_create
+        @user = User.create user_params
         if @user.save
             session[:user_id] = @user.id # What does this one do? 
             redirect_to root_path
         else 
-            render 'new'
+            render :new
         end
     end 
 
@@ -20,17 +22,17 @@ class UsersController < ApplicationController
     end
 
     def password
-
+        
     end
 
     def password_update
-        if @user&.authenticate params[:user][:current_password]
-            if @user.update params[:user][:current_password]
+        if @user&.authenticate params[:user][ :current_password ]
+            if @user.update user_params
                 flash[:success] = "Password updated"
                 redirect_to password_update_path
             else
                 flash[:danger] = @user.errors.full_messages.join(', ')
-                redirect_to password_path(user)
+                redirect_to password_path(@user)
             end
         else
             flash[:danger] = "You've entered an invalid current password"
@@ -41,7 +43,7 @@ class UsersController < ApplicationController
     def update
         if @user.update user_params
             flash[:success] = "Profile updated"
-            redirect_to posts_path(current_user)
+            redirect_to edit_user_path
         else
             flash[:danger] = @user.errors.full_messages.join(', ')
             redirect_to edit_user_path(current_user)
@@ -52,21 +54,25 @@ class UsersController < ApplicationController
     end
 
     private 
-    def find_user 
-        @user = current_user
+
+    def find_user_params
+        @user = User.find params[:id]
     end
 
-    def user_create 
-        @user = User.create params.require(:user).permit(
+    def user_params
+        params.require(:user).permit(
             :first_name, 
             :last_name, 
-            :email, 
+            :email,
             :password, 
             :password_confirmation)
     end
-    def user_params
-        params.require(:user).permit(:first_name, 
-            :last_name, 
-            :email)
+
+    def authorize
+        unless can? :crud, @user
+            flash[:danger] = "Not Authorized"
+            redirect_to root_path
+        end
     end
 end
+

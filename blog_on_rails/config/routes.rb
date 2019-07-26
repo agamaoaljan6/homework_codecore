@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get '/users/:id/password', { to: "users#password", as: 'password' }
   patch '/users/:id/password', { to: "users#password_update", as: 'password_update' }
 
-  resources :users, only: [:new, :create, :edit, :show, :update]
+  resources :users, only: [:new, :create, :edit, :show, :update] 
+
   resource :session, only: [:new, :create, :destroy, :edit]
  
 resources :posts do
