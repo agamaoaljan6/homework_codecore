@@ -1,0 +1,162 @@
+@import "bootstrap";
+
+#logo {
+    float: left;
+    font-size: 1.7em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: bold;
+}
+
+ul.answer-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.jumbotron {
+    background-image: asset-url('nick-morrison-FHnnjk1Yj7Y-unsplash.jpg');
+    background-size: cover;
+    height: 32em;
+    margin-left: 20px;
+    min-height: 65vh;
+    margin-top: 5em;
+}
+
+.jumbotron h1 {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+    font-weight: bold;
+    margin-top: 5em;
+
+}
+
+.float {
+    display: flex;
+    justify-content: flex-end;
+    float: right;
+}
+
+.card {
+    margin-bottom: 2em;
+}
+
+
+.comment-comment {
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+.post-body {
+    padding-top: 2em;
+    padding-bottom: 1em;
+}
+
+.post-title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.post-actions {
+
+    padding-top: 1em;
+    padding-bottom: 1.5em;
+}
+
+.del-btn {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.create-button {
+    text-align: center;
+    margin-right: 9em;
+}
+
+footer {
+    margin-top: 45px;
+    padding-top: 5px;
+    border-top: 1px solid #eaeaea;
+    clear: #777;
+}
+
+footer a:hover {
+    color: #222;
+}
+
+footer small {
+    float: left;
+}
+
+footer ul {
+    float: right;
+    list-style: none;
+}
+
+footer ul li {
+    float: left;
+    margin-left: 15px;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .post-index {
+        width: 50%;
+        margin-left: 1em;
+    }
+
+    .form-error {
+        width: 50%;
+    }
+
+    .form-field {
+        width: 50%
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .post-index {
+        width: 33.33%;
+    }
+
+    .form-error {
+        width: 60%;
+        margin-left: 9.5em;
+    }
+
+    .form-field {
+        width: 90%;
+        margin-left: 8.5em;
+    }
+
+    .create-button {
+        margin-right: 5em;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .post-index {
+        width: 25%;
+    }
+
+    .form-error {
+        width: 55%;
+        margin-left: 17em;
+    }
+
+    .form-field {
+        width: 85%;
+        margin-left: 15em;
+    }
+
+    .create-button {
+        margin-right: 10em;
+    }
+}
